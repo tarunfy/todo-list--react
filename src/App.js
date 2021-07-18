@@ -1,24 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, FormControl, Input, InputLabel } from "@material-ui/core";
 import "./App.css";
 import Todo from "./Todo";
+import db from "./firebase";
+import firebase from "firebase";
 
 function App() {
-  const [todos, setTodos] = useState([
-    "Make Breakfast",
-    "Play Guitar",
-    "Do one react project",
-    "Coding for an hour",
-  ]);
+  const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
+
+  // when the app loads, we want to fetch the data back from the database as they get added/removed:
+  useEffect(() => {
+    // this code here will run when app loads:
+    db.collection("todos")
+      .orderBy("timeStamp", "desc")
+      .onSnapshot((snapshot) => {
+        setTodos(
+          snapshot.docs.map((doc) => {
+            return doc.data().todo;
+          })
+        );
+      });
+  }, []);
+
   const addTodo = (e) => {
     e.preventDefault();
+
+    db.collection("todos").add({
+      todo: input,
+      timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
     setTodos([...todos, input]);
     setInput("");
   };
   return (
     <div className="App">
-      <h1>Hello World! 🚀 </h1>
+      <h1>Todo App 📑 </h1>
       <form>
         <FormControl>
           <InputLabel>✏ Write a Todo</InputLabel>
