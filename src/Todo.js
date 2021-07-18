@@ -10,6 +10,7 @@ import {
 import "./todo.css";
 import db from "./firebase";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import EditIcon from "@material-ui/icons/Edit";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -39,15 +40,20 @@ function Todo({ todo }) {
   return (
     <>
       <Modal open={open} onClose={handleClose}>
-        <div className={classes.paper}>
-          <h1>Edit the todo</h1>
+        <div className={`edit ${classes.paper}`}>
+          <h1>Edit your message</h1>
           <Input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={todo.todo}
           ></Input>
-          <Button variant="contained" color="secondary" onClick={updateTodo}>
+          <Button
+            color="primary"
+            className="update-btn"
+            variant="contained"
+            onClick={updateTodo}
+          >
             Update Todo
           </Button>
         </div>
@@ -56,9 +62,12 @@ function Todo({ todo }) {
         <ListItem>
           <ListItemText primary={`➜ ${todo.todo}`} />
         </ListItem>
-        <button onClick={(e) => setOpen(true)}>Edit</button>
+        <EditIcon onClick={(e) => setOpen(true)} className="green">
+          Edit
+        </EditIcon>
         <DeleteForeverIcon
           onClick={(e) => db.collection("todos").doc(todo.id).delete()}
+          className="green"
         />
       </List>
     </>

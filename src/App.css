@@ -1,5 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  color: white;
 }
 
 .App-logo {
@@ -35,4 +42,66 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.text-white {
+  color: rgb(253, 240, 240) !important;
+}
+h1 {
+  display: inline;
+}
+img {
+  margin-top: 10px;
+  margin-left: 0.2rem;
+}
+
+form {
+  margin-top: 1rem;
+}
+Input {
+  color: rgb(131, 133, 131) !important;
+}
+.MuiInput-underline:after {
+  border-bottom: 1px solid rgb(0, 255, 0) !important;
+}
+
+Button {
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+  color: rgb(0, 255, 0) !important;
+  border-color: rgb(20, 134, 20) !important;
+  box-shadow: 0 3px 5px 2px rgba(20, 134, 20, 0.3);
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h1 {
+  margin-top: 0.5rem;
+}
+
+.todo-list {
+  display: flex;
+  border-bottom: 0.2px solid rgb(41, 41, 41);
+  margin-top: 2rem !important;
+  padding: 0rem 2rem !important;
+}
+
+.green {
+  color: rgb(0, 175, 0);
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.edit {
+  background-color: rgb(37, 37, 37) !important;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: none !important;
+}
+.update-btn {
+  color: black !important;
 }

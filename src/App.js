@@ -4,6 +4,7 @@ import "./App.css";
 import Todo from "./Todo";
 import db from "./firebase";
 import firebase from "firebase";
+import photo from "../src/img/bhatsapp.png";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -36,10 +37,13 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>Todo App 📑 </h1>
+      <div className="header">
+        <h1>Bhatsapp </h1>
+        <img src={photo} alt="logo" height="40px" width="40px" />
+      </div>
       <form>
         <FormControl>
-          <InputLabel>✏ Write a Todo</InputLabel>
+          <InputLabel className="text-white">✏ Type a message</InputLabel>
           <Input
             type="text"
             value={input}
@@ -47,13 +51,13 @@ function App() {
           ></Input>
         </FormControl>
         <Button
-          variant="contained"
+          variant="outlined"
           color="primary"
           type="submit"
           onClick={addTodo}
           disabled={!input}
         >
-          Add Todo
+          Send
         </Button>
       </form>
       <ul>
