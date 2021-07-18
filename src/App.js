@@ -17,7 +17,7 @@ function App() {
       .onSnapshot((snapshot) => {
         setTodos(
           snapshot.docs.map((doc) => {
-            return doc.data().todo;
+            return { id: doc.id, todo: doc.data().todo };
           })
         );
       });
