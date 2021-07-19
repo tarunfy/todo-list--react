@@ -37,6 +37,10 @@ function Todo({ todo }) {
     setOpen(false);
     setInput("");
   };
+  const closeTodo = () => {
+    setOpen(false);
+    setInput("");
+  };
   return (
     <>
       <Modal open={open} onClose={handleClose}>
@@ -51,10 +55,18 @@ function Todo({ todo }) {
           <Button
             color="primary"
             className="update-btn"
-            variant="contained"
+            variant="outlined"
             onClick={updateTodo}
           >
-            Update Todo
+            Edit
+          </Button>
+          <Button
+            color="secondary"
+            className="back-btn"
+            variant="outlined"
+            onClick={closeTodo}
+          >
+            ❌
           </Button>
         </div>
       </Modal>
